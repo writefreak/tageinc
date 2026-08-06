@@ -66,3 +66,15 @@ body {
   height: 100%;
   display: block;
 }
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fbf6ee;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a83f13;
+}

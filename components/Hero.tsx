@@ -33,8 +33,8 @@ export default function Hero() {
             Discover a world <br className="md:hidden" /> of countless
             possibilities
           </h1>
-          <p className="mt-5 max-w-md font-body text-xs md:text-sm text-paper/85 sm:mt-6 sm:text-base lg:text-lg 2xl:max-w-lg">
-            Tageinc is a collection of ideas, stories, and emotions that reflect
+          <p className="mt-5 max-w-md font-body text-xs md:text-base text-paper/85 sm:mt-6 2xl:text-lg 2xl:max-w-lg">
+            Explore a collection of ideas, stories, and emotions that reflect
             the author's unique perspective and absolute creative vision.
           </p>
           <p className="mt-5 max-w-md font-body text-xs md:text-sm text-paper/85 sm:mt-6 sm:text-base lg:text-lg 2xl:max-w-lg"></p>
