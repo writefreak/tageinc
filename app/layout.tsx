@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
+import {
+  Fraunces,
+  Source_Sans_3,
+  IBM_Plex_Mono,
+  Poppins,
+  Oxygen,
+} from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -10,10 +16,10 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const sourceSans = Source_Sans_3({
+const sourceSans = Oxygen({
   subsets: ["latin"],
   variable: "--font-source-sans",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "700"],
   display: "swap",
 });
 
@@ -36,7 +42,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${sourceSans.variable} ${plexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${sourceSans.variable} ${plexMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

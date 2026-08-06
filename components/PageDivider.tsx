@@ -8,9 +8,15 @@ type PageDividerProps = {
  * A torn paper edge used between sections in place of a hard rule.
  * Echoes the deckled edge of a printed page rather than a decorative flourish.
  */
-export default function PageDivider({ fill = "#fbf6ee", flip = false }: PageDividerProps) {
+export default function PageDivider({
+  fill = "#fbf6ee",
+  flip = false,
+}: PageDividerProps) {
   return (
-    <div className={`deckle-edge ${flip ? "rotate-180" : ""}`} aria-hidden="true">
+    <div
+      className={`deckle-edge ${flip ? "rotate-180" : ""}`}
+      aria-hidden="true"
+    >
       <svg viewBox="0 0 1200 28" preserveAspectRatio="none">
         <path
           d="M0,10 C 20,22 40,0 60,9 C 80,18 100,2 120,11 C 140,20 160,3 180,10
