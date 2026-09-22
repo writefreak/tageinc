@@ -6,6 +6,7 @@ import About from "@/components/About";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 import TestHero from "@/components/test-hero";
+import FeaturedHomesSection from "@/components/featured-homes";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       {/* <Hero /> */}
       <TestHero />
       <About />
-      <FeaturedBooks />
+      <FeaturedHomesSection />
       <PoemsFeed />
       <Newsletter />
       {/* <Footer /> */}

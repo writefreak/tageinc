@@ -17,9 +17,12 @@ export default function AboutSection() {
       <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-14 items-stretch">
         {/* Left Card: Text & Story */}
         <div className="flex flex-col gap-2 md:gap-5">
-          <h2 className="mt-4 text-3xl sm:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.15]">
-            Seamlessly Unlock Your Next Dream Home
-          </h2>
+          <div>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.15]">
+              Building Lasting Value Through Credible Real Estate
+            </h2>
+            <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
+          </div>
 
           <p className="text-xs sm:text-sm leading-relaxed text-neutral-600">
             Homeland Prestige was founded to redefine real estate development,
@@ -30,10 +33,10 @@ export default function AboutSection() {
             empower families and investors to build lasting legacy through
             verified real estate.
           </p>
-          <div className="flex">
+          <div className="hidden md:flex pt-6">
             <button
               type="button"
-              className="hidden md:flex  items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white"
+              className="flex items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white"
             >
               Explore listings
               <ArrowRight className="h-4 w-4" />
