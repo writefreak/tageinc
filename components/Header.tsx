@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SearchBar from "./ui/searchbar";
 
@@ -14,28 +14,16 @@ const navLinks = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Lock scroll when sheet is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileMenuOpen]);
-
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 flex justify-center pointer-events-none">
-        <div className="w-full md:max-w-[1100px] px-4">
+        <div className="w-full md:max-w-275 px-4">
           <div
             style={{
               backdropFilter: "blur(14px) saturate(160%)",
               WebkitBackdropFilter: "blur(14px) saturate(160%)",
             }}
-            className="mt-3 w-full rounded-full border border-[var(--color-line)] bg-[rgba(251,246,238,0.85)] shadow-[0_10px_30px_-10px_rgba(33,28,22,0.08),0_4px_6px_-2px_rgba(33,28,22,0.03)] pointer-events-auto"
+            className="mt-3 w-full rounded-full border border-line bg-[rgba(251,246,238,0.85)] shadow-[0_10px_30px_-10px_rgba(33,28,22,0.08),0_4px_6px_-2px_rgba(33,28,22,0.03)] pointer-events-auto"
           >
             <div className="mx-auto flex items-center justify-between px-4 py-1.5 md:px-6 md:py-3 sm:px-8">
               {/* Brand Logo */}
@@ -98,39 +86,38 @@ export default function Header() {
           </div>
         </div>
       </header>
-
-      {/* Pure Framer Motion Sheet Overlay */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 md:hidden">
-            {/* Backdrop Animation */}
+          <motion.div
+            key="sheet-root"
+            className="fixed inset-0 z-50 md:hidden"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            onAnimationStart={() => {
+              document.documentElement.style.overflow = "hidden";
+            }}
+            onAnimationComplete={(def) => {
+              if (def === "closed")
+                document.documentElement.style.overflow = "";
+            }}
+          >
             <motion.div
-              key="sheet-backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
+              variants={{ open: { opacity: 1 }, closed: { opacity: 0 } }}
+              transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="absolute inset-0 bg-ink/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-ink/50"
             />
 
-            {/* Sheet Drawer Animation */}
             <motion.aside
-              key="sheet-drawer"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 35,
-                mass: 0.8,
+              variants={{
+                open: { x: 0 },
+                closed: { x: "100%" },
               }}
-              style={{ willChange: "transform" }}
+              transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
               className="absolute inset-y-0 right-0 flex w-full max-w-xs flex-col justify-between border-l border-line bg-paper p-6 shadow-2xl"
             >
               <div className="flex flex-col gap-6">
-                {/* Header inside sheet */}
                 <div className="flex items-center justify-between border-b border-line/60 pb-4">
                   <span className="font-display text-lg font-bold text-ink">
                     Menu
@@ -156,12 +143,12 @@ export default function Header() {
                   </button>
                 </div>
 
-                {/* Search Bar */}
-                <div className="w-full">
-                  <SearchBar />
-                </div>
+                {mobileMenuOpen && (
+                  <div className="w-full">
+                    <SearchBar />
+                  </div>
+                )}
 
-                {/* Navigation Links */}
                 <nav className="flex flex-col gap-4 mt-2">
                   {navLinks.map((link) => (
                     <a
@@ -176,7 +163,6 @@ export default function Header() {
                 </nav>
               </div>
 
-              {/* Action Button */}
               <div className="pt-6 border-t border-line/60">
                 <a
                   href="#contact"
@@ -187,7 +173,7 @@ export default function Header() {
                 </a>
               </div>
             </motion.aside>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

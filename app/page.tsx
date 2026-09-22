@@ -5,12 +5,14 @@ import PoemsFeed from "@/components/PoemsFeed";
 import About from "@/components/About";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
+import TestHero from "@/components/test-hero";
 
 export default function Home() {
   return (
     <main className="bg-paper">
-      <Header />
-      <Hero />
+      {/* <Header /> */}
+      {/* <Hero /> */}
+      <TestHero />
       <FeaturedBooks />
       <PoemsFeed />
       <About />
