@@ -20,7 +20,6 @@ export default function Home() {
       <FeaturedEstatesSection />
       <FeaturedLandsSection />
       <FAQ />
-      <Newsletter />
     </main>
   );
 }
