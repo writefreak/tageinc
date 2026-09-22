@@ -2,7 +2,7 @@
 
 @theme {
   /* Color tokens */
-  --color-paper: #fbf6ee;
+  --color-white: #ffff;
   --color-paper-deep: #f3ead9;
   --color-ink: #211c16;
   --color-ink-soft: #514738;
@@ -12,8 +12,9 @@
   --color-line: #ddceb3;
 
   /* Fonts, loaded via next/font in layout.tsx as CSS variables */
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-body: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-display-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
@@ -36,7 +37,7 @@ html {
 }
 
 body {
-  background-color: var(--color-paper);
+  background-color: var(--color-white);
   color: var(--color-ink);
   font-family: var(--font-body);
 }

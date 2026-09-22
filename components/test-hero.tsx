@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   motion,
@@ -8,39 +8,40 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import {
-  Sun,
-  MapPin,
-  Home,
-  Bed,
-  ArrowRight,
-  LogIn,
-  Plus,
-  ChevronDown,
-} from "lucide-react";
-
-const NAV_LINKS = ["Listings", "Our Agents", "Video Tours", "Company"];
-
-const CATEGORY_OPTIONS = ["Buy", "Rent", "Short-let"];
-const PRICE_OPTIONS = [
-  "Under ₦20,000,000",
-  "₦20,000,000 – ₦100,000,000",
-  "Above ₦100,000,000",
-];
-const BED_OPTIONS = ["1", "2", "3", "4+"];
+import { MapPin, Home, ArrowRight, ChevronDown } from "lucide-react";
 
 export default function Hero() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const bgY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? ["0%", "12%"] : ["0%", "35%"],
+  );
+  const bgScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? [1, 1] : [1, 1.15],
+  );
+  const contentY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? ["0%", "8%"] : ["0%", "20%"],
+  );
   const contentOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
 
   return (
@@ -50,7 +51,7 @@ export default function Hero() {
     >
       {/* Parallax background image */}
       <motion.div
-        style={{ y: bgY, scale: bgScale }}
+        style={{ y: bgY, scale: bgScale, willChange: "transform" }}
         className="absolute inset-0 h-full w-full"
       >
         <Image
@@ -65,132 +66,31 @@ export default function Hero() {
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Content wrapper */}
+      {/* Content wrapper with top padding for overlay header clearance */}
       <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 flex min-h-[95vh] flex-col"
+        style={{
+          y: contentY,
+          opacity: contentOpacity,
+          willChange: "transform",
+        }}
+        className="relative z-10 flex min-h-[95vh] flex-col pt-20 md:pt-20"
       >
-        {/* Navbar */}
-        <header className="flex items-center justify-between gap-4 px-4 py-4 sm:px-8 lg:px-12">
-          <div className="h-10 md:h-12">
-            <img
-              src="/homeland.png"
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 rounded-full bg-black/30 px-2 py-2 backdrop-blur-md lg:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="rounded-full px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                {link}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop actions */}
-          <div className="hidden items-center gap-3 lg:flex">
-            <button
-              type="button"
-              aria-label="Toggle theme"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 transition hover:opacity-90"
-            >
-              <Sun className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              className="flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-700"
-            >
-              <Plus className="h-4 w-4" />
-              List With Us
-            </button>
-            <button
-              type="button"
-              className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition hover:opacity-90"
-            >
-              <LogIn className="h-4 w-4" />
-              Sign In
-            </button>
-          </div>
-
-          {/* Mobile menu toggle */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Toggle menu"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md lg:hidden"
-          >
-            <span className="flex flex-col gap-1.5">
-              <span className="h-0.5 w-5 bg-white" />
-              <span className="h-0.5 w-5 bg-white" />
-              <span className="h-0.5 w-5 bg-white" />
-            </span>
-          </button>
-        </header>
-
-        {/* Mobile nav panel */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="mx-4 mt-2 overflow-hidden rounded-2xl bg-black/60 backdrop-blur-md lg:hidden"
-            >
-              <div className="flex flex-col gap-1 p-4">
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="rounded-lg px-3 py-2 text-sm font-semibold text-white hover:bg-white/10"
-                  >
-                    {link}
-                  </a>
-                ))}
-                <div className="mt-2 flex flex-col gap-2 border-t border-white/10 pt-3">
-                  <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white"
-                  >
-                    <Plus className="h-4 w-4" />
-                    List With Us
-                  </button>
-                  <button
-                    type="button"
-                    className="flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900"
-                  >
-                    <LogIn className="h-4 w-4" />
-                    Sign In
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* Hero heading */}
         <div className="flex flex-1 flex-col justify-center px-4 pt-6 md:pt-10 sm:px-8 lg:px-12">
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="md:max-w-3xl max-w-full text-4xl md:text-6xl font-bold leading-[1.05] text-white"
+            className="md:max-w-3xl max-w-full text-4xl md:text-6xl font-bold font-display leading-[1.05] text-white"
           >
             Discover Your Next <br className="hidden md:block" /> Dream Home
             <br />
-            {/* <span className="text-orange-500">Home</span> */}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            className="py-4 text-xs md:max-w-sm md:text-base text-white/90"
+            className="py-4 text-xs  md:max-w-sm md:text-base text-white/90"
           >
             Homeland Prestige brings curated luxury homes{" "}
             <br className="md:block hidden" /> and estates to your doorstep
@@ -266,9 +166,6 @@ function Field({
   );
 }
 
-/**
- * Fully custom dropdown (no native <select>), animated with framer-motion.
- */
 function Dropdown({
   icon,
   label,

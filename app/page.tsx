@@ -13,11 +13,11 @@ export default function Home() {
       {/* <Header /> */}
       {/* <Hero /> */}
       <TestHero />
+      <About />
       <FeaturedBooks />
       <PoemsFeed />
-      <About />
       <Newsletter />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }
