@@ -9,6 +9,7 @@ import TestHero from "@/components/test-hero";
 import FeaturedHomesSection from "@/components/featured-homes";
 import FeaturedEstatesSection from "@/components/featured-estates";
 import FeaturedLandsSection from "@/components/featured-lands";
+import { FAQ } from "@/components/home/faq";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <FeaturedHomesSection />
       <FeaturedEstatesSection />
       <FeaturedLandsSection />
+      <FAQ />
       <Newsletter />
     </main>
   );

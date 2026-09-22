@@ -47,7 +47,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative md:h-screen min-h-[95vh] w-full font-sans overflow-hidden"
+      className="relative md:h-screen min-h-svh w-full font-sans overflow-hidden"
     >
       {/* Parallax background image */}
       <motion.div
@@ -73,10 +73,10 @@ export default function Hero() {
           opacity: contentOpacity,
           willChange: "transform",
         }}
-        className="relative z-10 flex min-h-[95vh] flex-col pt-20 md:pt-20"
+        className="relative z-10 flex h-full md:min-h-[95vh] flex-col justify-between pt-24 md:pt-20"
       >
         {/* Hero heading */}
-        <div className="flex flex-1 flex-col justify-center px-4 pt-6 md:pt-10 sm:px-8 lg:px-12">
+        <div className="flex flex-col justify-start md:justify-center px-4 pt-4 md:pt-10 sm:px-8 lg:px-12 md:flex-1">
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            className="py-4 text-xs  md:max-w-sm md:text-base text-white/90"
+            className="py-3 text-xs md:max-w-sm md:text-base text-white/90"
           >
             Homeland Prestige brings curated luxury homes{" "}
             <br className="md:block hidden" /> and estates to your doorstep
@@ -98,14 +98,14 @@ export default function Hero() {
         </div>
 
         {/* Search card */}
-        <div className="px-4 pb-6 sm:px-8 lg:px-12">
+        <div className="px-4 pb-6 pt-16 md:pt-0 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="rounded-3xl bg-black/40 p-6 backdrop-blur-md sm:p-8"
           >
-            <h2 className="mb-6 text-xl font-bold text-white sm:text-2xl">
+            <h2 className="mb-6 text-xl font-bold text-white md:text-2xl">
               Browse listings
             </h2>
 

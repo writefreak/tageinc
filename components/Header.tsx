@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "#" },
   { name: "Listings", href: "#" },
-  { name: "Video Tours", href: "#" },
+  { name: "Find Agents", href: "#" },
 ];
 
 export default function Header() {
