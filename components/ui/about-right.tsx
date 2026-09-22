@@ -39,7 +39,7 @@ export default function AboutRightSection() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full overflow-hidden rounded-2xl min-h-70 sm:min-h-85 shadow-sm"
+      className="relative w-full overflow-hidden rounded-3xl min-h-70 sm:min-h-85 shadow-sm"
     >
       {/* Parallax Image Container extending beyond boundaries for movement */}
       <motion.div
