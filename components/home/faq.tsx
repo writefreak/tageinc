@@ -10,26 +10,25 @@ import {
 
 const FAQS = [
   {
-    question:
-      "How do I verify the authenticity and title documents of a property?",
-    answer:
-      "Every property listed on our platform undergoes a thorough verification process. We inspect registered titles such as Certificate of Occupancy (C of O), Governor's Consent, and Survey Plans with government land registries before public listing.",
-  },
-  {
-    question:
-      "Can I inspect homes, land, or estate plots before making a deposit?",
+    question: "Can I inspect before making a deposit?",
     answer:
       "Yes, physical and virtual site inspections are completely free. You can schedule a tour directly with our verified agents at a date and time that fits your schedule.",
   },
   {
-    question: "What payment structures or installment plans are available?",
+    question: "What payment structures  are available?",
     answer:
       "We offer flexible payment structures across various properties, including outright payments and structured installment packages spread across 3 to 12 months with minimal interest.",
   },
   {
-    question: "What extra fees should I expect during a property purchase?",
+    question: "How do I verify the authenticity of a property?",
     answer:
-      "Beyond the property price, standard transactions typically involve legal documentation fees, survey fees, and development levies (for serviced estate plots). All costs are stated clearly upfront.",
+      "Every property listed on our platform undergoes a thorough verification process. We inspect registered titles such as Certificate of Occupancy (C of O), Governor's Consent, and Survey Plans with government land registries before public listing.",
+  },
+
+  {
+    question: "Can I make payments directly on this website?",
+    answer:
+      "No, we do not process or accept payments through this website. All financial transactions are conducted directly between buyers and property representatives or legal counsel. Consequently, Homeland Prestige assumes no liability or legal responsibility for any payment issues, errors, or financial disputes that may arise.",
   },
   {
     question: "Can I list my own property, land, or estate on your platform?",
@@ -52,7 +51,7 @@ export function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5 }}
-            className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900"
+            className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-neutral-900"
           >
             Frequently Asked Questions
           </motion.h2>
@@ -71,12 +70,12 @@ export function FAQ() {
             >
               <AccordionItem
                 value={`item-${i}`}
-                className="overflow-hidden bg-orange-600 rounded-2xl px-5 sm:px-6 shadow-xs transition-colors duration-200 hover:border-neutral-300 data-[state=open]:bg-orange-600"
+                className="overflow-hidden bg-white border rounded-2xl px-5 sm:px-6 shadow-xs transition-colors duration-200 border-neutral-300 data-[state=open]:bg-white"
               >
-                <AccordionTrigger className="py-4 text-white sm:py-5 text-left text-sm sm:text-base font-semibold hover:no-underline [&>svg]:text-[#ff5500]">
+                <AccordionTrigger className="py-4 font-display text-black sm:py-5 text-left text-sm sm:text-base font-semibold hover:no-underline [&>svg]:text-[#ff5500]">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="pb-5 text-xs sm:text-sm leading-relaxed text-white ">
+                <AccordionContent className="pb-5 font-sans text-xs sm:text-sm leading-relaxed text-neutral-500 ">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

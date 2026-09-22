@@ -106,7 +106,7 @@ export default function FeaturedLandsSection() {
         {/* Section Header */}
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900">
+            <h2 className="font-display text-2xl sm:text-4xl font-bold tracking-tight text-neutral-900">
               Featured Land
             </h2>
             <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
@@ -142,7 +142,7 @@ export default function FeaturedLandsSection() {
         <div className="mb-4 flex md:hidden items-center justify-between">
           <button
             type="button"
-            className="group flex md:hidden items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
+            className="group flex md:hidden font-display items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
           >
             <span>Explore More</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

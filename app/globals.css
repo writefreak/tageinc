@@ -2,7 +2,7 @@
 
 @theme {
   /* Color tokens */
-  --color-white: #ffff;
+  --color-white: #ffffff;
   --color-paper-deep: #f3ead9;
   --color-ink: #211c16;
   --color-ink-soft: #514738;
@@ -11,11 +11,32 @@
   --color-orange-soft: #f4a06a;
   --color-line: #ddceb3;
 
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
   /* Fonts, loaded via next/font in layout.tsx as CSS variables */
   --font-display:
     var(--font-display-sans), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-body-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 html {
@@ -44,7 +65,7 @@ body {
 
 ::selection {
   background-color: var(--color-orange);
-  color: var(--color-paper);
+  color: var(--color-paper-deep);
 }
 
 /* Visible keyboard focus, kept even where components remove the default outline */

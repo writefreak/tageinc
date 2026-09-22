@@ -144,12 +144,12 @@ export default function ImageCard({
       {/* Content Area */}
       <div className="px-2 pt-4 pb-2">
         {/* Price */}
-        <h3 className="text-xl font-bold tracking-tight text-neutral-900">
+        <h3 className="text-xl font-bold font-display tracking-tight text-neutral-900">
           {price}
         </h3>
 
         {/* Key Features Row */}
-        <div className="mt-2.5 flex items-center gap-4 text-xs font-medium text-neutral-800 flex-wrap">
+        <div className="mt-2.5 font-sans flex items-center gap-4 text-xs font-medium text-neutral-800 flex-wrap">
           {propertyType === "land" && plots !== undefined && (
             <div className="flex items-center gap-1.5">
               <Flag className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />

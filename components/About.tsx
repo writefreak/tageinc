@@ -18,7 +18,7 @@ export default function AboutSection() {
         {/* Left Card: Text & Story */}
         <div className="flex flex-col gap-5 md:gap-5">
           <div>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.15]">
+            <h2 className="mt-4 text-2xl sm:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.15]">
               Building Lasting Value Through Credible Real Estate
             </h2>
             <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />

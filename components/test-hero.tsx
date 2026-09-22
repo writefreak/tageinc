@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import {
   motion,
@@ -9,39 +9,20 @@ import {
   useTransform,
 } from "framer-motion";
 import { MapPin, Home, ArrowRight, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 export default function Hero() {
-  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const update = () => setIsMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const bgY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isMobile ? ["0%", "12%"] : ["0%", "35%"],
-  );
-  const bgScale = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isMobile ? [1, 1] : [1, 1.15],
-  );
-  const contentY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isMobile ? ["0%", "8%"] : ["0%", "20%"],
-  );
+  // Using raw numbers instead of percentage strings prevents expensive layout reflows per frame
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const contentOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
 
   return (
@@ -49,31 +30,36 @@ export default function Hero() {
       ref={containerRef}
       className="relative md:h-screen min-h-svh w-full font-sans overflow-hidden"
     >
-      {/* Parallax background image */}
+      {/* Parallax background image with GPU hardware isolation */}
       <motion.div
-        style={{ y: bgY, scale: bgScale, willChange: "transform" }}
-        className="absolute inset-0 h-full w-full"
+        style={{
+          y: bgY,
+          scale: bgScale,
+          willChange: "transform",
+        }}
+        className="absolute inset-0 h-full w-full transform-gpu text-transparent select-none"
       >
         <Image
           src="/home.jpg"
           alt="Aerial view of a modern residential estate"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
       </motion.div>
 
-      {/* Dark overlay for readability */}
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Content wrapper with top padding for overlay header clearance */}
+      {/* Foreground Content */}
       <motion.div
         style={{
           y: contentY,
           opacity: contentOpacity,
-          willChange: "transform",
+          willChange: "transform, opacity",
         }}
-        className="relative z-10 flex h-full md:min-h-[95vh] flex-col justify-between pt-24 md:pt-20"
+        className="relative z-10 flex h-full md:min-h-[95vh] flex-col justify-between pt-24 md:pt-20 transform-gpu"
       >
         {/* Hero heading */}
         <div className="flex flex-col justify-start md:justify-center px-4 pt-4 md:pt-10 sm:px-8 lg:px-12 md:flex-1">
@@ -84,7 +70,6 @@ export default function Hero() {
             className="md:max-w-3xl max-w-full text-4xl md:text-6xl font-bold font-display leading-[1.05] text-white"
           >
             Discover Your Next <br className="hidden md:block" /> Dream Home
-            <br />
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -98,14 +83,14 @@ export default function Hero() {
         </div>
 
         {/* Search card */}
-        <div className="px-4 pb-6 pt-16 md:pt-0 sm:px-8 lg:px-12">
+        <div className="px-4 pb-6 pt-12 md:pt-0 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="rounded-3xl bg-black/40 p-6 backdrop-blur-md sm:p-8"
           >
-            <h2 className="mb-6 text-xl font-bold text-white md:text-2xl">
+            <h2 className="mb-6 text-xl font-bold font-display text-white md:text-2xl">
               Browse listings
             </h2>
 
@@ -122,7 +107,7 @@ export default function Hero() {
               </Field>
               <Dropdown
                 placeholder="Browse Category"
-                options={["Estate, Land, city"]}
+                options={["Estate", "Land", "City"]}
                 label="Select Category"
                 icon={<MapPin className="h-4 w-4 text-orange-500" />}
               />
@@ -157,7 +142,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2 text-xs md:text-sm font-semibold text-white">
+      <div className="flex items-center gap-2 text-xs md:text-sm font-sans font-semibold text-white">
         {icon}
         {label}
       </div>
@@ -182,7 +167,7 @@ function Dropdown({
 
   return (
     <div className="relative flex flex-col gap-2">
-      <div className="flex items-center text-xs md:text-sm gap-2 font-semibold text-white">
+      <div className="flex items-center font-sans text-xs md:text-sm gap-2 font-semibold text-white">
         {icon}
         {label}
       </div>
