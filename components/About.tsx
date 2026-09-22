@@ -38,7 +38,7 @@ export default function AboutSection() {
               type="button"
               className="flex items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white"
             >
-              Explore listings
+              Learn More
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
@@ -52,7 +52,7 @@ export default function AboutSection() {
             type="button"
             className="flex items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition-transform"
           >
-            Explore listings
+            Learn More
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>

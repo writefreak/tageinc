@@ -7,12 +7,12 @@ import {
   Heart,
   Bed,
   Bath,
-  Move,
   MapPin,
   Home,
-  Landmark,
   Building2,
-  TreePine,
+  Flag,
+  Scan,
+  Move,
 } from "lucide-react";
 
 export type PropertyType = "home" | "land" | "estate";
@@ -30,27 +30,27 @@ export interface ImageCardProps {
   location?: string;
   title?: string;
   propertyType?: PropertyType;
-  unitsAvailable?: number; // Useful for estates
-  plots?: number; // Useful for land
+  unitsAvailable?: number;
+  plots?: number;
   isLiked?: boolean;
   onLikeToggle?: (newLikedState: boolean, newCount: number) => void;
 }
 
 export default function ImageCard({
   imageSrc = "/property-sample.jpg",
-  daysAgo = "418d ago",
+  daysAgo = "154d ago",
   status = "For Sale",
-  views = 128,
-  likes = 16,
-  price = "₦185,000,000",
+  views = 14,
+  likes = 3,
+  price = "₦6,000,000",
   beds,
   baths,
-  area = "100 sqft",
-  location = "Worji, Port Harcourt, Rivers",
-  title = "4 Bedroom Duplex with BQ",
-  propertyType = "home",
+  area = "179 sqft",
+  location = "Isiokpo II, Isiokpo, Rivers",
+  title = "A Large 179 Hectares of Land Available",
+  propertyType = "land",
   unitsAvailable,
-  plots,
+  plots = 1,
   isLiked: initialIsLiked = false,
   onLikeToggle,
 }: ImageCardProps) {
@@ -72,12 +72,12 @@ export default function ImageCard({
     }
   };
 
-  // Dynamic icon based on property type
+  // Dynamic primary icon for title row & land plots
   const getPropertyIcon = () => {
     switch (propertyType) {
       case "land":
         return (
-          <TreePine className="h-4 w-4 shrink-0 text-[#ff5500] stroke-[2.2]" />
+          <Flag className="h-4 w-4 shrink-0 text-[#ff5500] stroke-[2.2]" />
         );
       case "estate":
         return (
@@ -94,7 +94,7 @@ export default function ImageCard({
   return (
     <div className="group w-full max-w-sm overflow-hidden rounded-3xl bg-white p-2 shadow-sm border border-neutral-100 font-sans">
       {/* Top Image Frame */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+      <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl">
         <Image
           src={imageSrc}
           alt={title}
@@ -149,10 +149,23 @@ export default function ImageCard({
         </h3>
 
         {/* Key Features Row */}
-        <div className="mt-2.5 flex items-center gap-3.5 text-xs font-medium text-neutral-800 flex-wrap">
+        <div className="mt-2.5 flex items-center gap-4 text-xs font-medium text-neutral-800 flex-wrap">
+          {propertyType === "land" && plots !== undefined && (
+            <div className="flex items-center gap-1.5">
+              <Flag className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+              <span>
+                {plots} plot{plots > 1 ? "s" : ""}
+              </span>
+            </div>
+          )}
+
           {area && (
             <div className="flex items-center gap-1.5">
-              <Move className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+              {propertyType === "land" ? (
+                <Scan className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+              ) : (
+                <Move className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+              )}
               <span>{area}</span>
             </div>
           )}
@@ -168,13 +181,6 @@ export default function ImageCard({
             <div className="flex items-center gap-1.5">
               <Bath className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
               <span>{baths} Baths</span>
-            </div>
-          )}
-
-          {propertyType === "land" && plots !== undefined && (
-            <div className="flex items-center gap-1.5">
-              <Landmark className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
-              <span>{plots} Plot(s)</span>
             </div>
           )}
 

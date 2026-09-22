@@ -8,19 +8,17 @@ import Footer from "@/components/Footer";
 import TestHero from "@/components/test-hero";
 import FeaturedHomesSection from "@/components/featured-homes";
 import FeaturedEstatesSection from "@/components/featured-estates";
+import FeaturedLandsSection from "@/components/featured-lands";
 
 export default function Home() {
   return (
     <main className="bg-paper">
-      {/* <Header /> */}
-      {/* <Hero /> */}
       <TestHero />
       <About />
       <FeaturedHomesSection />
       <FeaturedEstatesSection />
-      <PoemsFeed />
+      <FeaturedLandsSection />
       <Newsletter />
-      {/* <Footer /> */}
     </main>
   );
 }
