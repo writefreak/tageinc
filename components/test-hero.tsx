@@ -128,7 +128,7 @@ export default function Hero() {
               />
             </div>
 
-            <div className="mt-6 flex justify-end">
+            <div className="mt-6 flex md:justify-end">
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}

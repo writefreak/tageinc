@@ -10,6 +10,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const STATS = [
   { numericValue: 10, suffix: "+", label: "Years Experience" },
@@ -57,7 +58,8 @@ export default function AboutRightSection() {
 
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
 
-      <div className="absolute inset-0 flex items-end p-3 sm:p-5">
+      <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-5 z-10 gap-3">
+        {/* Stats Grid */}
         <div className="grid w-full grid-cols-2 gap-2 sm:gap-3">
           {STATS.map((stat, index) => (
             <GlassStatCard key={index} stat={stat} />
