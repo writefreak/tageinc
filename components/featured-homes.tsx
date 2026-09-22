@@ -115,18 +115,38 @@ export default function FeaturedHomesSection() {
           {/* Explore More Button */}
           <button
             type="button"
-            className="group flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
+            className="group hidden md:flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
           >
             <span>Explore More</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
 
+        {/* Cards Grid / Mobile Horizontal Slider */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:overflow-visible sm:pb-0"
+        >
+          {FEATURED_HOMES.map((home) => (
+            <div
+              key={home.id}
+              className="w-[85vw] max-w-[320px] shrink-0 snap-center sm:w-auto sm:max-w-none sm:shrink"
+            >
+              <ImageCard {...home} />
+            </div>
+          ))}
+        </div>
+
         {/* Mobile-Only Navigation Controls Header */}
-        <div className="mb-4 flex sm:hidden items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wider text-neutral-600">
-            Swipe or Navigate ({activeIndex + 1}/{FEATURED_HOMES.length})
-          </span>
+        <div className="mb-4 flex md:hidden items-center justify-between">
+          <button
+            type="button"
+            className="group flex md:hidden items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
+          >
+            <span>Explore More</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrev}
@@ -147,37 +167,7 @@ export default function FeaturedHomesSection() {
           </div>
         </div>
 
-        {/* Cards Grid / Mobile Horizontal Slider */}
-        <div
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:overflow-visible sm:pb-0"
-        >
-          {FEATURED_HOMES.map((home) => (
-            <div
-              key={home.id}
-              className="w-[85vw] max-w-[320px] shrink-0 snap-center sm:w-auto sm:max-w-none sm:shrink"
-            >
-              <ImageCard {...home} />
-            </div>
-          ))}
-        </div>
-
         {/* Mobile Pagination Dot Bar */}
-        <div className="mt-4 flex sm:hidden items-center justify-center gap-2">
-          {FEATURED_HOMES.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => scrollToSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                activeIndex === idx
-                  ? "w-7 bg-[#ff5500]"
-                  : "w-2 bg-neutral-300 hover:bg-neutral-400"
-              }`}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );
