@@ -72,18 +72,12 @@ export default function Hero() {
       >
         {/* Navbar */}
         <header className="flex items-center justify-between gap-4 px-4 py-4 sm:px-8 lg:px-12">
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-600 sm:h-10 sm:w-10">
-              <Home className="h-5 w-5 text-white sm:h-6 sm:w-6" />
-            </div>
-            <div className="leading-tight">
-              <p className="text-sm font-bold text-white sm:text-base">
-                Homeland
-              </p>
-              <p className="text-sm font-bold text-orange-500 sm:text-base -mt-1">
-                Prestige
-              </p>
-            </div>
+          <div className="h-10 md:h-12">
+            <img
+              src="/homeland.png"
+              alt=""
+              className="h-full w-full object-cover"
+            />
           </div>
 
           {/* Desktop nav */}
@@ -181,14 +175,14 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Hero heading */}
-        <div className="flex flex-1 flex-col justify-center px-4 pt-10 sm:px-8 lg:px-12">
+        <div className="flex flex-1 flex-col justify-center px-4 pt-6 md:pt-10 sm:px-8 lg:px-12">
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="max-w-3xl text-3xl md:text-6xl font-bold leading-[1.05] text-white"
+            className="md:max-w-3xl max-w-full text-4xl md:text-6xl font-bold leading-[1.05] text-white"
           >
-            Discover Your Next <br /> Dream Home
+            Discover Your Next <br className="hidden md:block" /> Dream Home
             <br />
             {/* <span className="text-orange-500">Home</span> */}
           </motion.h1>
@@ -263,7 +257,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2 text-sm font-semibold text-white">
+      <div className="flex items-center gap-2 text-xs md:text-sm font-semibold text-white">
         {icon}
         {label}
       </div>
@@ -291,7 +285,7 @@ function Dropdown({
 
   return (
     <div className="relative flex flex-col gap-2">
-      <div className="flex items-center gap-2 text-sm font-semibold text-white">
+      <div className="flex items-center text-xs md:text-sm gap-2 font-semibold text-white">
         {icon}
         {label}
       </div>
