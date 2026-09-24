@@ -8,7 +8,7 @@ import ImageCard from "../ui/image-card";
 const FEATURED_SECTIONS = [
   {
     id: "homes",
-    title: "Featured Homes",
+    title: "Homes",
     items: [
       {
         id: "home-1",
@@ -70,7 +70,7 @@ const FEATURED_SECTIONS = [
   },
   {
     id: "estates",
-    title: "Featured Estates",
+    title: "Estates",
     items: [
       {
         id: "estate-2",
@@ -132,7 +132,7 @@ const FEATURED_SECTIONS = [
   },
   {
     id: "lands",
-    title: "Featured Land",
+    title: "Land",
     items: [
       {
         id: "land-1",
@@ -238,7 +238,7 @@ function PropertyCategorySection({
   };
 
   return (
-    <section className="w-full py-8 sm:py-12 px-4 sm:px-8 lg:px-12 font-sans border-b border-neutral-100 last:border-b-0">
+    <section className="w-full py-8 md:py-12 px-4 md:px-12 font-sans border-b border-neutral-100 last:border-b-0">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-6 sm:mb-8 flex items-center justify-between">
@@ -292,7 +292,7 @@ function PropertyCategorySection({
 // Main Page Container Export
 export default function ListingClient() {
   return (
-    <main className="w-full bg-white py-4">
+    <main className="w-full bg-white py-4 pt-7 md:pt-14 md:pb-14">
       {FEATURED_SECTIONS.map((section) => (
         <PropertyCategorySection
           key={section.id}

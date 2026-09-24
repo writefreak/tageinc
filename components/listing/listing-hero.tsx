@@ -106,7 +106,7 @@ export default function ListingHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="rounded-3xl bg-black/40 p-6 backdrop-blur-md sm:p-8 border border-white/10"
+          className="rounded-3xl bg-black/40 p-6 backdrop-blur-md md:p-8 border border-white/10"
         >
           <h2 className="mb-6 text-xl font-bold font-display text-white md:text-2xl">
             Browse listings
