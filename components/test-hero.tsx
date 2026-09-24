@@ -77,7 +77,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             className="py-3 text-xs md:max-w-sm md:text-base text-white/90"
           >
-            Homeland Prestige brings curated luxury homes{" "}
+            Homeland Premier brings curated luxury homes{" "}
             <br className="md:block hidden" /> and estates to your doorstep
           </motion.p>
         </div>

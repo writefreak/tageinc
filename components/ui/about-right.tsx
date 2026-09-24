@@ -48,7 +48,7 @@ export default function AboutRightSection() {
       >
         <Image
           src="/home2.jpg"
-          alt="Homeland Prestige modern luxury property architecture"
+          alt="Homeland Premier modern luxury property architecture"
           fill
           className="object-cover"
           sizes="(max-width: 1024px) 100vw, 50vw"
