@@ -8,7 +8,7 @@ import { Sun, LogIn, Plus } from "lucide-react";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "#" },
+  { name: "About Us", href: "/about" },
   { name: "Listings", href: "#" },
   { name: "Find Agents", href: "#" },
 ];
@@ -16,13 +16,14 @@ const NAV_LINKS = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between gap-4 px-4 py-4 sm:px-8 lg:px-12">
       <div className="h-10 md:h-12">
         <Link href="/">
           <img
-            src="/homeland.png"
+            src={"/homeland.png"}
             alt="Homeland Prestige Logo"
             className="h-full w-full object-cover"
           />
