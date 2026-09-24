@@ -55,7 +55,7 @@ export default function AboutPage() {
       <AboutHero />
 
       {/* Our story */}
-      <section className="px-6 md:px-14 py-16 bg-neutral-50">
+      <section className="px-6 md:px-14 py-16 md:pt-32 bg-neutral-50">
         <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
           <div>
             <h2 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight leading-[1.2]">
@@ -63,21 +63,20 @@ export default function AboutPage() {
             </h2>
             <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
 
-            <p className="mt-4 text-xs sm:text-sm leading-relaxed text-neutral-600">
+            <p className="mt-4 text-xs md:text-sm leading-relaxed text-neutral-600">
               Homeland Premier helps families and investors buy, sell, and
-              manage property across Nigeria with confidence. Every listing on
-              our platform is verified before it reaches a client: titles
-              checked, paperwork in order, and an agent assigned from first
-              enquiry through to handover.
+              manage property across Nigeria with confidence. We check every
+              title before a listing goes live, keep the paperwork in order, and
+              assign an agent who stays with you from your first enquiry through
+              to handover.
             </p>
-            <p className="mt-4 text-xs sm:text-sm leading-relaxed text-neutral-600">
-              We manage thousands of transactions and over ₦50B in property
-              value across three states, backed by a team of surveyors, legal
-              advisors, and client managers who handle the details so you don't
-              have to.
+            <p className="mt-4 text-xs md:text-sm leading-relaxed text-neutral-600">
+              We've closed thousands of transactions and now manage over ₦50B in
+              property value across three states, and every client still deals
+              with same credible surveyors and agents from start to finish.
             </p>
           </div>
-          <img className="h-64 md:h-80 w-full" />
+          <img className="h-64 md:h-80 w-full rounded-3xl" src={"/home2.jpg"} />
         </div>
       </section>
 
