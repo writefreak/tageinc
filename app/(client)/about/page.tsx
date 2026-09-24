@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import AboutHero from "@/components/about/about-hero";
 import {
   Heart,
@@ -9,212 +9,181 @@ import {
   Compass,
   Eye,
   Users2,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
+  LucideIcon,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
-const VALUES = [
+interface Reason {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+}
+
+interface AboutSectionData {
+  id: string;
+  title: string;
+  paragraphs: string[];
+  imageSrc: string;
+  imageAlt: string;
+  bgColor: string;
+  imageFirstDesktop?: boolean;
+}
+
+const REASONS_TO_CHOOSE_US: Reason[] = [
   {
-    icon: Heart,
-    title: "People first",
-    body: "Every decision starts with the families and investors it affects, not the transaction.",
+    icon: ShieldCheck,
+    title: "100% Vetted Titles",
+    body: "Every property title, C of O, and survey document is thoroughly verified by accredited legal professionals before a listing ever goes live.",
   },
   {
     icon: Compass,
-    title: "Keep it simple",
-    body: "Land and property should be easy to understand. We remove confusion instead of adding to it.",
+    title: "Dedicated Advisor",
+    body: "You get an assigned personal advisor who handles site inspections, paperwork, and legal procedures from your initial inquiry straight through to handover.",
   },
   {
-    icon: ShieldCheck,
-    title: "Earn trust daily",
-    body: "Verified titles, clear paperwork, and honest timelines. Trust is earned in every interaction.",
+    icon: Eye,
+    title: "Zero Hidden Fees",
+    body: "We maintain complete price integrity with explicit closing costs and documented payment terms, eliminating sudden post-agreement surprises.",
   },
   {
     icon: HandHeart,
-    title: "Move with care",
-    body: "We close deals quickly, but never carelessly, because people's savings ride on our platform.",
-  },
-  {
-    icon: Eye,
-    title: "Default to transparency",
-    body: "Clear pricing, a public process, and honest communication, even when the news is hard.",
+    title: "Prime Locations",
+    body: "Gain exclusive access to high-growth residential and commercial properties in strategically selected developments across rapidly expanding hubs.",
   },
   {
     icon: Users2,
-    title: "Better together",
-    body: "The best outcomes happen when clients, agents, and our team feel supported on every side.",
+    title: "Vetted Network",
+    body: "Work directly with our established network of certified surveyors, legal advisors, and estate managers with proven track records in property development.",
+  },
+  {
+    icon: Heart,
+    title: "Asset Management",
+    body: "Our support does not end at handover. We assist with property management, tenant placement, and long-term asset value growth strategies.",
   },
 ];
 
-const PURPOSE_PAGES = [
+const ABOUT_SECTIONS: AboutSectionData[] = [
   {
-    icon: Compass,
-    title: "Our mission",
-    body: "Our mission is to empower individuals, families, and institutional investors across Nigeria by providing seamless access to thoroughly verified real estate opportunities. We achieve this by dismantling the traditional friction in property acquisition, ensuring that every title is vetted, legal processes are straightforward, and every client receives personalized end-to-end guidance from initial inquiry to final handover, regardless of their budget or portfolio size.",
+    id: "story",
+    title: "Connecting Nigerians With Their Dream Homes",
+    paragraphs: [
+      "Homeland Premier helps families and investors buy, sell, and manage property across Nigeria with confidence. We check every title before a listing goes live, keep the paperwork in order, and assign an agent who stays with you from your first enquiry through to handover.",
+      "We've closed thousands of transactions and now manage over ₦50B in property value across three states, and every client still deals with same credible surveyors and agents from start to finish.",
+    ],
+    imageSrc: "/home1.jpg",
+    imageAlt: "Connecting Nigerians With Their Dream Homes",
+    bgColor: "bg-neutral-50",
+    imageFirstDesktop: false,
   },
   {
-    icon: Eye,
-    title: "Our vision",
-    body: "We envision a transformed real estate ecosystem where trust, security, and transparency are absolute standards rather than rare exceptions. Our goal is to set the benchmark for property transactions across Africa by creating a digital-first marketplace where land ownership is accessible, fraud is eliminated, and every buyer can invest with absolute certainty in the long-term value and legality of their property.",
+    id: "mission",
+    title: "Our Mission",
+    paragraphs: [
+      "Our mission is to empower individuals, families, and institutional investors across Nigeria by providing seamless access to thoroughly verified real estate opportunities. We achieve this by dismantling the traditional friction in property acquisition, ensuring that every title is vetted, legal processes are straightforward, and every client receives personalized end-to-end guidance from initial inquiry to final handover, regardless of their budget or portfolio size.",
+    ],
+    imageSrc: "/home7.jpg",
+    imageAlt: "Our Mission",
+    bgColor: "bg-white",
+    imageFirstDesktop: true,
+  },
+  {
+    id: "vision",
+    title: "Our Vision",
+    paragraphs: [
+      "We envision a transformed real estate ecosystem where trust, security, and transparency are absolute standards rather than rare exceptions. Our goal is to set the benchmark for property transactions across Africa by creating a digital-first marketplace where land ownership is accessible, fraud is eliminated, and every buyer can invest with absolute certainty in the long-term value and legality of their property.",
+    ],
+    imageSrc: "/home8.jpg",
+    imageAlt: "Our Vision",
+    bgColor: "bg-neutral-50",
+    imageFirstDesktop: false,
   },
 ];
 
-export default function AboutPage() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-  const headerStyle = isHome;
-
-  const [activePurposeIndex, setActivePurposeIndex] = useState(0);
-
-  const imageSectionRef = useRef<HTMLDivElement>(null);
+function AboutSection({ section }: { section: AboutSectionData }) {
+  const imageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: imageSectionRef,
+    target: imageRef,
     offset: ["start end", "end start"],
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
+  // Reduced the shift range to prevent extreme vertical distortion
+  const imageY: MotionValue<string> = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["-15%", "15%"],
+  );
 
-  const currentPurpose = PURPOSE_PAGES[activePurposeIndex];
-  const IconComponent = currentPurpose.icon;
+  const textOrder = section.imageFirstDesktop
+    ? "order-1 md:order-2"
+    : "order-1";
+  const imageOrder = section.imageFirstDesktop
+    ? "order-2 md:order-1"
+    : "order-2";
 
   return (
+    <section
+      ref={imageRef}
+      className={`px-4 md:px-14 py-16 ${
+        section.id === "story" ? "md:pt-32" : ""
+      } ${section.bgColor} overflow-hidden`}
+    >
+      <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
+        <div className={textOrder}>
+          <h2 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight leading-[1.2]">
+            {section.title}
+          </h2>
+          <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
+
+          {section.paragraphs.map((p, idx) => (
+            <p
+              key={idx}
+              className="mt-4 text-xs sm:text-sm leading-relaxed text-neutral-600"
+            >
+              {p}
+            </p>
+          ))}
+        </div>
+
+        <div
+          className={`${imageOrder} h-64 md:h-80 w-full overflow-hidden rounded-3xl relative`}
+        >
+          <motion.img
+            style={{ y: imageY }}
+            className="absolute top-[-40%] left-0 h-[220%] w-full object-cover rounded-3xl"
+            src={section.imageSrc}
+            alt={section.imageAlt}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function AboutPage() {
+  return (
     <main className="w-full font-display text-neutral-900">
-      {/* Hero */}
       <AboutHero />
 
-      {/* Our story */}
-      <section
-        ref={imageSectionRef}
-        className="px-4 md:px-14 py-16 md:pt-32 bg-neutral-50 overflow-hidden"
-      >
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
-          <div>
-            <h2 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight leading-[1.2]">
-              Connecting Nigerians With Their Dream Homes
+      {/* Mapped Story, Mission & Vision Sections */}
+      {ABOUT_SECTIONS.map((section) => (
+        <AboutSection key={section.id} section={section} />
+      ))}
+
+      {/* Why Choose Us */}
+      <section className="px-4 md:px-14 md:pb-32 pb-20 py-16 bg-white">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col items-center text-center max-w-xl mx-auto">
+            <h2 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight">
+              Why Our Clients <br className="md:hidden" />
+              Choose Us
             </h2>
             <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
-
-            <p className="mt-4 text-xs sm:text-sm leading-relaxed text-neutral-600">
-              Homeland Premier helps families and investors buy, sell, and
-              manage property across Nigeria with confidence. We check every
-              title before a listing goes live, keep the paperwork in order, and
-              assign an agent who stays with you from your first enquiry through
-              to handover.
-            </p>
-            <p className="mt-4 text-xs sm:text-sm leading-relaxed text-neutral-600">
-              We've closed thousands of transactions and now manage over ₦50B in
-              property value across three states, and every client still deals
-              with same credible surveyors and agents from start to finish.
-            </p>
           </div>
-          <div className="h-64 md:h-80 w-full overflow-hidden rounded-3xl relative">
-            <motion.img
-              style={{ y: imageY }}
-              className="absolute top-[-60%] left-0 h-[220%] w-full object-cover rounded-3xl"
-              src={"/home2.jpg"}
-              alt="Connecting Nigerians With Their Dream Homes"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & vision */}
-      <section className="px-4 md:px-14 py-16">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center">
-            <h2 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight">
-              What drives us forward
-            </h2>
-          </div>
-
-          <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm">
-            <div className="flex items-center justify-center gap-4 border-b border-neutral-100 pb-4">
-              <div className="flex gap-2 items-center">
-                {PURPOSE_PAGES.map((item, idx) => (
-                  <button
-                    key={item.title}
-                    type="button"
-                    onClick={() => setActivePurposeIndex(idx)}
-                    className={`rounded-full px-4 py-1.5 md:text-lg text-sm font-medium transition ${
-                      activePurposeIndex === idx
-                        ? "bg-orange-600 text-white"
-                        : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                    }`}
-                  >
-                    {item.title}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activePurposeIndex}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.2 }}
-                className="mt-6 flex items-center flex-col gap-2"
-              >
-                {/* <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-50">
-                  <IconComponent className="h-5 w-5 text-orange-600" />
-                </div> */}
-                {/* <h3 className="mt-4 text-lg md:text-xl text-center font-semibold text-neutral-900">
-                  {currentPurpose.title}
-                </h3> */}
-                <p className="text-xs md:text-sm text-center leading-relaxed text-neutral-600">
-                  {currentPurpose.body}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="mt-6 flex justify-center gap-1.5 border-t border-neutral-100 pt-4">
-              {PURPOSE_PAGES.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  aria-label={`Go to slide ${idx + 1}`}
-                  onClick={() => setActivePurposeIndex(idx)}
-                  className={`h-2 rounded-full transition-all ${
-                    activePurposeIndex === idx
-                      ? "w-6 bg-orange-600"
-                      : "w-2 bg-neutral-200"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="px-4 md:px-14 py-16 bg-neutral-50">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center max-w-xl mx-auto">
-            <span className="text-xs font-semibold uppercase tracking-wide text-[#ff5500]">
-              Our values
-            </span>
-            <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">
-              The principles behind every decision
-            </h2>
-            <p className="mt-3 text-xs sm:text-sm text-neutral-600">
-              Six values guide how we build our listings, treat our clients, and
-              work with each other.
-            </p>
-          </div>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {VALUES.map(({ icon: Icon, title, body }) => (
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {REASONS_TO_CHOOSE_US.map(({ icon: Icon, title, body }) => (
               <div
                 key={title}
-                className="rounded-2xl border border-neutral-200 bg-white p-6"
+                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-50">
                   <Icon className="h-5 w-5 text-orange-600" />
