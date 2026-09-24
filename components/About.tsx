@@ -13,7 +13,7 @@ const STATS = [
 
 export default function AboutSection() {
   return (
-    <section className="w-full py-16 md:pt-44 px-6 md:px-14 text-neutral-900 font-display">
+    <section className="w-full py-16 md:pt-44 px-4 md:px-14 text-neutral-900 font-display">
       <div className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-14 items-stretch">
         {/* Left Card: Text & Story */}
         <div className="flex flex-col gap-5 md:gap-5">

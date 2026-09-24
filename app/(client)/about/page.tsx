@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import AboutHero from "@/components/about/about-hero";
 import {
   Heart,
@@ -11,6 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const VALUES = [
   {
@@ -49,13 +51,25 @@ export default function AboutPage() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const headerStyle = isHome;
+
+  const imageSectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: imageSectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-60%", "60%"]);
+
   return (
     <main className="w-full font-display text-neutral-900">
       {/* Hero */}
       <AboutHero />
 
       {/* Our story */}
-      <section className="px-6 md:px-14 py-16 md:pt-32 bg-neutral-50">
+      <section
+        ref={imageSectionRef}
+        className="px-4 md:px-14 py-16 md:pt-32 bg-neutral-50 overflow-hidden"
+      >
         <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
           <div>
             <h2 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight leading-[1.2]">
@@ -63,20 +77,27 @@ export default function AboutPage() {
             </h2>
             <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
 
-            <p className="mt-4 text-xs md:text-sm leading-relaxed text-neutral-600">
+            <p className="mt-4 text-xs sm:text-sm leading-relaxed text-neutral-600">
               Homeland Premier helps families and investors buy, sell, and
               manage property across Nigeria with confidence. We check every
               title before a listing goes live, keep the paperwork in order, and
               assign an agent who stays with you from your first enquiry through
               to handover.
             </p>
-            <p className="mt-4 text-xs md:text-sm leading-relaxed text-neutral-600">
+            <p className="mt-4 text-xs sm:text-sm leading-relaxed text-neutral-600">
               We've closed thousands of transactions and now manage over ₦50B in
               property value across three states, and every client still deals
               with same credible surveyors and agents from start to finish.
             </p>
           </div>
-          <img className="h-64 md:h-80 w-full rounded-3xl" src={"/home2.jpg"} />
+          <div className="h-64 md:h-80 w-full overflow-hidden rounded-3xl">
+            <motion.img
+              style={{ y: imageY }}
+              className="h-[120%] w-full object-cover rounded-3xl"
+              src={"/home2.jpg"}
+              alt="Connecting Nigerians With Their Dream Homes"
+            />
+          </div>
         </div>
       </section>
 
