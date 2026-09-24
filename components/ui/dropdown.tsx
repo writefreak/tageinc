@@ -10,14 +10,21 @@ export default function Dropdown({
   label,
   placeholder,
   options,
+  value,
+  onChange,
 }: {
   icon: React.ReactNode;
   label: string;
   placeholder: string;
   options: string[];
+  value?: string;
+  onChange?: (val: string) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [internalSelected, setInternalSelected] = useState<string | null>(null);
+
+  const selected = value !== undefined ? value : internalSelected;
+
   const [coords, setCoords] = useState<{
     top: number;
     left: number;
@@ -36,7 +43,6 @@ export default function Dropdown({
     setMounted(true);
   }, []);
 
-  // Update popup coordinates when button is clicked or window resizes/scrolls
   const updateCoords = () => {
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
@@ -53,7 +59,6 @@ export default function Dropdown({
     setOpen((prev) => !prev);
   };
 
-  // Close when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -93,7 +98,7 @@ export default function Dropdown({
         className="flex w-full items-center justify-between rounded-xl border border-white/20 bg-black/20 px-4 py-3 text-left text-sm font-semibold text-white outline-none transition focus:border-orange-500"
       >
         <span className={selected ? "text-white" : "text-white/60"}>
-          {selected ?? placeholder}
+          {selected || placeholder}
         </span>
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
@@ -103,7 +108,6 @@ export default function Dropdown({
         </motion.span>
       </button>
 
-      {/* Render menu directly to document body to bypass overflow-hidden */}
       {mounted &&
         createPortal(
           <AnimatePresence>
@@ -126,7 +130,11 @@ export default function Dropdown({
                     <button
                       type="button"
                       onClick={() => {
-                        setSelected(option);
+                        if (onChange) {
+                          onChange(option);
+                        } else {
+                          setInternalSelected(option);
+                        }
                         setOpen(false);
                       }}
                       className="w-full rounded-lg px-4 py-3 text-left text-sm font-medium text-white/90 transition hover:bg-orange-600/20 hover:text-white"

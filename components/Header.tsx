@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Listings", href: "/listing" },
-  { name: "Find Agents", href: "#" },
+  { name: "Find Agents", href: "/agents" },
 ];
 
 export default function Header() {
@@ -51,13 +51,6 @@ export default function Header() {
 
       {/* Desktop actions */}
       <div className="hidden items-center gap-3 lg:flex">
-        <button
-          type="button"
-          aria-label="Toggle theme"
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-900 transition hover:opacity-90"
-        >
-          <Sun className="h-5 w-5" />
-        </button>
         <button
           type="button"
           className="flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-700"
