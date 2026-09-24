@@ -9,7 +9,7 @@ import { Sun, LogIn, Plus } from "lucide-react";
 const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Listings", href: "#" },
+  { name: "Listings", href: "/listing" },
   { name: "Find Agents", href: "#" },
 ];
 
