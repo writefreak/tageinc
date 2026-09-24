@@ -143,7 +143,7 @@ export default function AboutPage() {
                     key={item.title}
                     type="button"
                     onClick={() => setActivePurposeIndex(idx)}
-                    className={`rounded-full px-4 py-1.5 text-xs font-medium transition ${
+                    className={`rounded-full px-4 py-1.5 md:text-lg text-sm font-medium transition ${
                       activePurposeIndex === idx
                         ? "bg-orange-600 text-white"
                         : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
@@ -167,9 +167,9 @@ export default function AboutPage() {
                 {/* <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-50">
                   <IconComponent className="h-5 w-5 text-orange-600" />
                 </div> */}
-                <h3 className="mt-4 text-lg md:text-xl text-center font-semibold text-neutral-900">
+                {/* <h3 className="mt-4 text-lg md:text-xl text-center font-semibold text-neutral-900">
                   {currentPurpose.title}
-                </h3>
+                </h3> */}
                 <p className="text-xs md:text-sm text-center leading-relaxed text-neutral-600">
                   {currentPurpose.body}
                 </p>
@@ -225,57 +225,6 @@ export default function AboutPage() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why choose us */}
-      <section className="px-4 md:px-14 py-16">
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wide text-[#ff5500]">
-              Why Homeland Prestige
-            </span>
-            <h2 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight leading-[1.2]">
-              Why clients choose us, and stay
-            </h2>
-            <ul className="mt-5 space-y-3">
-              {[
-                "One platform for the whole process, from listing to handover",
-                "Verified titles on every property, checked before you see it",
-                "A dedicated agent, not a call center queue",
-                "Transparent pricing with no surprise fees at closing",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-xs sm:text-sm text-neutral-700"
-                >
-                  <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-orange-600" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6">
-            <div className="flex gap-1 text-orange-600">
-              {"★★★★★".split("").map((s, i) => (
-                <span key={i}>{s}</span>
-              ))}
-            </div>
-            <p className="mt-3 text-sm sm:text-base font-medium leading-relaxed text-neutral-900">
-              Switching to Homeland Prestige was the easiest property decision
-              our family made all year. Everything, from title checks to
-              handover, lived in one place.
-            </p>
-            <div className="mt-4 flex items-center gap-3">
-              <div className="h-9 w-9 rounded-full bg-orange-100" />
-              <div>
-                <p className="text-xs sm:text-sm font-semibold">Hannah Ade</p>
-                <p className="text-[11px] sm:text-xs text-neutral-500">
-                  Homeowner, Port Harcourt
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
