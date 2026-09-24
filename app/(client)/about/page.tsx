@@ -180,10 +180,19 @@ export default function AboutPage() {
             <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
           </div>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {REASONS_TO_CHOOSE_US.map(({ icon: Icon, title, body }) => (
-              <div
+            {REASONS_TO_CHOOSE_US.map(({ icon: Icon, title, body }, idx) => (
+              <motion.div
                 key={title}
-                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-50px" }}
+                transition={{
+                  duration: 0.4,
+                  delay: idx * 0.08,
+                  ease: "easeOut",
+                }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-50">
                   <Icon className="h-5 w-5 text-orange-600" />
@@ -192,7 +201,7 @@ export default function AboutPage() {
                 <p className="mt-2 text-xs sm:text-sm leading-relaxed text-neutral-600">
                   {body}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
