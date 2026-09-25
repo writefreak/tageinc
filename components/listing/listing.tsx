@@ -89,11 +89,11 @@ export default function Listing({ property }: ListingProps) {
   };
 
   return (
-    <div className="min-h-screen font-sans pb-20 lg:pb-12">
+    <div className="min-h-screen pb-20 md:pb-32">
       {/* Top Navbar */}
       <header className="sticky top-0 z-30 flex items-center justify-between border-b border-neutral-200/80 bg-white/90 px-4 py-3 backdrop-blur-md md:px-8">
         <Link
-          href="/"
+          href="/listing"
           className="flex items-center gap-2 text-xs font-semibold text-neutral-700 hover:text-black transition-colors"
         >
           <ChevronLeft className="h-4 w-4 stroke-[2.5]" />
@@ -258,7 +258,7 @@ export default function Listing({ property }: ListingProps) {
               </div>
 
               {/* Dynamic Feature Badges */}
-              <div className="mt-6 flex items-center gap-6 text-sm font-medium text-neutral-800 flex-wrap bg-neutral-50 rounded-2xl p-4 border border-neutral-100">
+              <div className="mt-6 flex items-center gap-6 text-sm font-medium text-neutral-800 flex-wrap rounded-2xl p-4 border border-neutral-100">
                 {property.propertyType === "land" &&
                   property.plots !== undefined && (
                     <div className="flex items-center gap-2">
@@ -306,10 +306,10 @@ export default function Listing({ property }: ListingProps) {
 
             {/* Description Paragraphs */}
             <div className="rounded-3xl bg-white p-6 border border-neutral-100 shadow-sm space-y-4">
-              <h2 className="text-lg font-bold text-neutral-900">
+              <h2 className="text-sm md:text-lg font-display font-bold text-neutral-900">
                 About this property
               </h2>
-              <div className="space-y-3 text-sm leading-relaxed text-neutral-600">
+              <div className="space-y-3 text-xs md:text-sm font-sans leading-relaxed text-neutral-600">
                 {property.about.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
@@ -320,12 +320,12 @@ export default function Listing({ property }: ListingProps) {
           {/* AGENT SIDEBAR CARD */}
           <div className="lg:col-span-1">
             <div className="sticky top-20 rounded-3xl bg-white p-6 border border-neutral-100 shadow-sm space-y-6">
-              <h2 className="text-base font-bold text-neutral-900">
+              <h2 className="text-sm md:text-base font-bold font-display text-neutral-900">
                 Listing Agent
               </h2>
 
               <div className="flex items-center gap-4">
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center">
                   {property.agent.avatarUrl ? (
                     <Image
                       src={property.agent.avatarUrl}
@@ -339,8 +339,8 @@ export default function Listing({ property }: ListingProps) {
                 </div>
 
                 <div>
-                  <div className="flex items-center gap-1.5">
-                    <h3 className="text-base font-bold text-neutral-900">
+                  <div className="flex font-display items-center gap-1.5">
+                    <h3 className="text-sm md:text-base font-bold text-neutral-900">
                       {property.agent.name}
                     </h3>
                     <ShieldCheck className="h-4 w-4 text-[#ff5500]" />
@@ -353,20 +353,12 @@ export default function Listing({ property }: ListingProps) {
 
               <div className="space-y-3 border-t border-neutral-100 pt-4">
                 <a
-                  href={`tel:${property.agent.phone}`}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#ff5500] px-4 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#e04b00] active:scale-98"
-                >
-                  <Phone className="h-4 w-4 stroke-[2.2]" />
-                  <span>Call {property.agent.name}</span>
-                </a>
-
-                <a
                   href={`https://wa.me/${property.agent.phone.replace(/[^0-9]/g, "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm font-semibold text-neutral-800 transition-all hover:bg-neutral-50 active:scale-98"
+                  className="flex w-full items-center text-white bg-[#ff5500] justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold transition-all hover:bg-orange-600 active:scale-98"
                 >
-                  <MessageSquare className="h-4 w-4 stroke-[2.2] text-emerald-600" />
+                  <MessageSquare className="h-4 w-4 stroke-[2.2] text-white" />
                   <span>WhatsApp Message</span>
                 </a>
 

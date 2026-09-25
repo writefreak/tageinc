@@ -10,14 +10,13 @@ export interface Agent {
 
 export interface Property {
   id: string;
-  slug: string;
   title: string;
   status: string;
   daysAgo: string;
   views: number;
   likes: number;
   price: string;
-  pricePerNight: string;
+  pricePerNight?: string;
   beds?: number;
   baths?: number;
   area: string;
