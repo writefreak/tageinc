@@ -80,16 +80,16 @@ export default function ImageCard({
     switch (propertyType) {
       case "land":
         return (
-          <Flag className="h-4 w-4 shrink-0 text-[#ff5500] stroke-[2.2]" />
+          <Flag className="h-4 w-4 shrink-0 text-orange-600 stroke-[2.2]" />
         );
       case "estate":
         return (
-          <Building2 className="h-4 w-4 shrink-0 text-[#ff5500] stroke-[2.2]" />
+          <Building2 className="h-4 w-4 shrink-0 text-orange-600 stroke-[2.2]" />
         );
       case "home":
       default:
         return (
-          <Home className="h-4 w-4 shrink-0 text-[#ff5500] stroke-[2.2]" />
+          <Home className="h-4 w-4 shrink-0 text-orange-600 stroke-[2.2]" />
         );
     }
   };
@@ -112,7 +112,7 @@ export default function ImageCard({
             <span className="rounded-full bg-black/50 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md">
               {daysAgo}
             </span>
-            <span className="rounded-full bg-[#ff5500] px-4 py-1.5 text-xs font-semibold text-white shadow-sm">
+            <span className="rounded-full bg-orange-600 px-4 py-1.5 text-xs font-semibold text-white shadow-sm">
               {status}
             </span>
           </div>
@@ -156,7 +156,7 @@ export default function ImageCard({
           <div className="mt-2.5 font-sans flex items-center gap-4 text-xs font-medium text-neutral-800 flex-wrap">
             {propertyType === "land" && plots !== undefined && (
               <div className="flex items-center gap-1.5">
-                <Flag className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+                <Flag className="h-4 w-4 text-orange-600 stroke-[2.2]" />
                 <span>
                   {plots} plot{plots > 1 ? "s" : ""}
                 </span>
@@ -166,9 +166,9 @@ export default function ImageCard({
             {area && (
               <div className="flex items-center gap-1.5">
                 {propertyType === "land" ? (
-                  <Scan className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+                  <Scan className="h-4 w-4 text-orange-600 stroke-[2.2]" />
                 ) : (
-                  <Move className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+                  <Move className="h-4 w-4 text-orange-600 stroke-[2.2]" />
                 )}
                 <span>{area}</span>
               </div>
@@ -176,21 +176,21 @@ export default function ImageCard({
 
             {propertyType === "home" && beds !== undefined && (
               <div className="flex items-center gap-1.5">
-                <Bed className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+                <Bed className="h-4 w-4 text-orange-600 stroke-[2.2]" />
                 <span>{beds} Beds</span>
               </div>
             )}
 
             {propertyType === "home" && baths !== undefined && (
               <div className="flex items-center gap-1.5">
-                <Bath className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+                <Bath className="h-4 w-4 text-orange-600 stroke-[2.2]" />
                 <span>{baths} Baths</span>
               </div>
             )}
 
             {propertyType === "estate" && unitsAvailable !== undefined && (
               <div className="flex items-center gap-1.5">
-                <Building2 className="h-4 w-4 text-[#ff5500] stroke-[2.2]" />
+                <Building2 className="h-4 w-4 text-orange-600 stroke-[2.2]" />
                 <span>{unitsAvailable} Units</span>
               </div>
             )}
@@ -198,7 +198,7 @@ export default function ImageCard({
 
           {/* Location Row */}
           <div className="mt-2.5 flex items-center gap-2 text-xs text-neutral-800">
-            <MapPin className="h-4 w-4 shrink-0 text-[#ff5500] stroke-[2.2]" />
+            <MapPin className="h-4 w-4 shrink-0 text-orange-600 stroke-[2.2]" />
             <span className="truncate">{location}</span>
           </div>
 
