@@ -51,13 +51,15 @@ export default function Header() {
 
       {/* Desktop actions */}
       <div className="hidden items-center gap-3 lg:flex">
-        <button
-          type="button"
-          className="flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-700"
-        >
-          <Plus className="h-4 w-4" />
-          List With Us
-        </button>
+        <a href="/become-agent">
+          <button
+            type="button"
+            className="flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-700"
+          >
+            <Plus className="h-4 w-4" />
+            List With Us
+          </button>
+        </a>
         <button
           type="button"
           className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition hover:opacity-90"

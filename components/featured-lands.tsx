@@ -112,14 +112,15 @@ export default function FeaturedLandsSection() {
             <div className="mt-2.5 h-1 w-12 rounded-full bg-[#ff5500]" />
           </div>
 
-          {/* Explore More Button */}
-          <button
-            type="button"
-            className="group hidden md:flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
-          >
-            <span>Explore More</span>
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
+          <a href="/listing">
+            <button
+              type="button"
+              className="group font-display flex md:hidden items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
+            >
+              <span>Explore More</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </a>
         </div>
 
         {/* Cards Grid / Mobile Horizontal Slider */}
@@ -140,13 +141,15 @@ export default function FeaturedLandsSection() {
 
         {/* Mobile-Only Navigation Controls Header */}
         <div className="mb-4 flex md:hidden items-center justify-between">
-          <button
-            type="button"
-            className="group flex md:hidden font-display items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
-          >
-            <span>Explore More</span>
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
+          <a href="/listing">
+            <button
+              type="button"
+              className="group font-display flex md:hidden items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
+            >
+              <span>Explore More</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </a>
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrev}
