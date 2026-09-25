@@ -6,7 +6,7 @@ import ImageCard from "./ui/image-card";
 
 const FEATURED_ESTATES = [
   {
-    id: "2",
+    id: "estate-2",
     imageSrc: "/es2.jpg",
     daysAgo: "25d ago",
     status: "New Phase",
@@ -20,7 +20,7 @@ const FEATURED_ESTATES = [
     propertyType: "estate" as const,
   },
   {
-    id: "3",
+    id: "estate-3",
     imageSrc: "/es3.jpg",
     daysAgo: "45d ago",
     status: "For Sale",
@@ -34,7 +34,7 @@ const FEATURED_ESTATES = [
     propertyType: "estate" as const,
   },
   {
-    id: "4",
+    id: "estate-4",
     imageSrc: "/es4.jpg",
     daysAgo: "45d ago",
     status: "For Sale",
@@ -48,7 +48,7 @@ const FEATURED_ESTATES = [
     propertyType: "estate" as const,
   },
   {
-    id: "5",
+    id: "estate-5",
     imageSrc: "/es5.jpg",
     daysAgo: "60d ago",
     status: "Selling Fast",

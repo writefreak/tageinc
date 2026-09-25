@@ -6,7 +6,7 @@ import ImageCard from "./ui/image-card";
 
 const FEATURED_HOMES = [
   {
-    id: "1",
+    id: "home-1",
     imageSrc: "/home.jpg",
     daysAgo: "418d ago",
     status: "For Sale",
@@ -20,7 +20,7 @@ const FEATURED_HOMES = [
     title: "4 Bedroom Duplex with BQ",
   },
   {
-    id: "2",
+    id: "home-2",
     imageSrc: "/home2.jpg",
     daysAgo: "404d ago",
     status: "For Rent",
@@ -34,7 +34,7 @@ const FEATURED_HOMES = [
     title: "Luxury Serviced Apartment",
   },
   {
-    id: "3",
+    id: "home-3",
     imageSrc: "/home3.jpg",
     daysAgo: "117d ago",
     status: "For Sale",
@@ -48,7 +48,7 @@ const FEATURED_HOMES = [
     title: "FURNISHED 4BEDROOM DUPLEX FOR...",
   },
   {
-    id: "4",
+    id: "home-4",
     imageSrc: "/home4.jpg",
     daysAgo: "99d ago",
     status: "For Sale",

@@ -23,6 +23,7 @@ import {
   User,
   ShieldCheck,
   Waves,
+  Bookmark,
 } from "lucide-react";
 import { Property } from "@/lib/types/property";
 
@@ -91,42 +92,51 @@ export default function Listing({ property }: ListingProps) {
   return (
     <div className="min-h-screen pb-20 md:pb-32">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-30 flex items-center justify-between border-b border-neutral-200/80 bg-white/90 px-4 py-3 backdrop-blur-md md:px-8">
-        <Link
-          href="/listing"
-          className="flex items-center gap-2 text-xs font-semibold text-neutral-700 hover:text-black transition-colors"
-        >
-          <ChevronLeft className="h-4 w-4 stroke-[2.5]" />
-          <span>Back to properties</span>
-        </Link>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={handleLikeClick}
-            className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-medium transition-all active:scale-95 ${
-              liked
-                ? "bg-rose-600 text-white shadow-sm"
-                : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-            }`}
+
+      <header className="sticky top-4 z-30 mx-auto max-w-296 px-4 md:px-6">
+        <div className="flex items-center justify-between rounded-2xl border border-neutral-200/80 bg-white p-3 shadow-sm backdrop-blur-md">
+          <Link
+            href="/listing"
+            className="flex items-center gap-1.5 rounded-xl bg-[#ff5500] px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#e04b00] active:scale-95"
           >
-            <Heart
-              className={`h-3.5 w-3.5 ${
-                liked ? "fill-white stroke-white" : "stroke-[2.2]"
-              }`}
-            />
-            <span>{likeCount}</span>
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-1.5 rounded-full bg-neutral-100 px-3.5 py-1.5 text-xs font-medium text-neutral-700 hover:bg-neutral-200"
-          >
-            <Share2 className="h-3.5 w-3.5 stroke-[2.2]" />
-            <span className="hidden sm:inline">Share</span>
-          </button>
+            <ChevronLeft className="h-4 w-4 stroke-[2.5]" />
+            <span>Back</span>
+          </Link>
+
+          <div className="flex items-center gap-2">
+            {/* Heart / Like Button in exact image styling */}
+            <button
+              type="button"
+              onClick={handleLikeClick}
+              aria-label="Like property"
+              className="flex h-10 items-center gap-1.5 rounded-xl border border-neutral-200/80 bg-white px-3 text-sm font-semibold text-neutral-800 transition-all hover:bg-neutral-50 active:scale-95"
+            >
+              <Heart
+                className={`h-4 w-4 stroke-[2] ${
+                  liked ? "fill-rose-600 text-rose-600" : "text-neutral-800"
+                }`}
+              />
+              <span>{likeCount}</span>
+            </button>
+
+            {/* Views Counter */}
+            <div className="flex h-10 items-center gap-2 rounded-xl border border-neutral-200/80 bg-white px-3.5 text-sm font-semibold text-neutral-900">
+              <Eye className="h-4 w-4 text-neutral-800 stroke-[2]" />
+              <span>{property.views}</span>
+            </div>
+
+            {/* Share Button */}
+            <button
+              type="button"
+              aria-label="Share property"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-200/80 bg-white text-neutral-800 transition-all hover:bg-neutral-50 active:scale-95"
+            >
+              <Share2 className="h-4 w-4 stroke-[2]" />
+            </button>
+          </div>
         </div>
       </header>
-
-      <main className="mx-auto max-w-7xl px-0 sm:px-6 lg:px-8 pt-0 sm:pt-6">
+      <main className="mx-auto md:max-w-6xl px-0 md:px-6 lg:px-8 pt-8 md:pt-6">
         {/* MOBILE SLIDER (< lg) */}
         <div className="relative block lg:hidden w-full overflow-hidden bg-black">
           <div
