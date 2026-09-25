@@ -113,8 +113,8 @@ export default function BecomeAgentHero() {
           </motion.h1>
           <div className="mt-2.5 h-1 md:w-24 w-12 rounded-full bg-[#ff5500]" />
 
-          <div className="flex flex-col md:flex-row gap-2 items-center">
-            <a href="#" className="pt-10">
+          <div className="flex gap-2 items-center md:pt-10 pt-5">
+            <a href="#">
               <button
                 type="button"
                 className="flex items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-700"
@@ -123,7 +123,7 @@ export default function BecomeAgentHero() {
                 <ArrowRight className="h-4 w-4" />
               </button>
             </a>
-            <a href="#" className="pt-10">
+            <a href="#" className="md:block hidden">
               <button
                 type="button"
                 className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition "
