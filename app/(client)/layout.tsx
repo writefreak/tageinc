@@ -7,6 +7,7 @@ import {
 import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ConditionalHeader from "@/components/ui/conditional-header";
 
 // Modern, high-end display sans-serif for headings
 const jakartaSans = Plus_Jakarta_Sans({
@@ -115,7 +116,7 @@ export default function RootLayout({
       className={`${jakartaSans.variable} ${sourceSans.variable} ${plexMono.variable}`}
     >
       <body className="font-sans antialiased bg-neutral-950 text-white selection:bg-orange-600 selection:text-white">
-        <Header />
+        <ConditionalHeader />
         <main>{children}</main>
         <Footer />
       </body>
