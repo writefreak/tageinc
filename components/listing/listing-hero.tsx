@@ -76,7 +76,7 @@ export default function ListingHero() {
           opacity: contentOpacity,
           willChange: "transform, opacity",
         }}
-        className="relative z-10 flex flex-1 flex-col justify-center items-center pt-28 pb-12 px-4 md:px-0 text-center transform-gpu"
+        className="relative z-10 flex flex-1 flex-col justify-center items-center pt-28 px-4 md:px-0 text-center transform-gpu"
       >
         <div className="w-full max-w-sm md:max-w-3xl">
           <motion.h1

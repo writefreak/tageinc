@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, LogIn, Plus } from "lucide-react";
 
@@ -14,6 +14,7 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -108,8 +109,9 @@ export default function Header() {
               ))}
               <div className="mt-2 flex flex-col gap-2 border-t border-white/10 pt-3">
                 <button
+                  onClick={() => router.push("/become-agent")}
                   type="button"
-                  className="flex items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white"
+                  className="flex  items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white"
                 >
                   <Plus className="h-4 w-4" />
                   List With Us

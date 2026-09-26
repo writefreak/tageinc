@@ -55,7 +55,7 @@ export default function WhyListSection() {
               >
                 {/* Rounded Icon Badge */}
                 <div className="flex items-center justify-center h-12 w-12 rounded-2xl bg-orange-100/70 text-[#ff5500]">
-                  <Icon className="h-6 w-6 stroke-1 md:stroke-[2.2]" />
+                  <Icon className="h-6 w-6 stroke-[2.2]" />
                 </div>
 
                 {/* Card Title */}

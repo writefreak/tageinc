@@ -98,7 +98,7 @@ export default function AgentHero() {
           <div className="mt-2.5 mx-auto h-1 md:w-24 w-12 rounded-full bg-[#ff5500]" />
         </div>
       </motion.div>
-      <div className="px-4 md:px-12">
+      <div className="px-4 md:px-12 pt-7">
         <AgentSearchBar />
       </div>{" "}
     </section>
