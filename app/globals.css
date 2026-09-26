@@ -100,3 +100,9 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #a83f13;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .logo-ios-fix {
+    height: 1.15rem; /* whatever size you need just for iOS */
+  }
+}
