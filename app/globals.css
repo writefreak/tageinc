@@ -103,6 +103,7 @@ body {
 
 @supports (-webkit-touch-callout: none) {
   .logo-ios-fix {
-    height: 1.15rem; /* whatever size you need just for iOS */
+    height: 4rem;
+    width: 10rem; /* whatever size you need just for iOS */
   }
 }

@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between gap-4 px-4 py-4 sm:px-8 lg:px-12">
-      <div className="h-10 md:h-12">
+      <div className="h-10 md:h-12 logo-ios-fix">
         <Link href="/">
           <img
             src={"/homeland.png"}
