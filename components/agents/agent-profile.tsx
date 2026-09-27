@@ -93,7 +93,7 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
 
         {/* Name + Action Buttons */}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-neutral-900">
+          <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-neutral-900">
             {agent.name}
           </h1>
 
@@ -126,7 +126,7 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
       {/* Main Content Box Container with Fixed Height & Wide Desktop Width */}
       <div className="md:pt-8 flex font-display flex-col h-140 rounded-4xl p-4">
         {/* Navigation Tabs - Horizontally scrollable on mobile without scrollbar */}
-        <div className="flex shrink-0 gap-2.5 md:pt-4 pb-4 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex shrink-0 gap-2.5 pt-2 md:pt-4 pb-4 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -154,7 +154,7 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
         </div>
 
         {/* Tab Inner Card with Fixed Height & Scrollable Content — scrollbar hidden, scroll still works */}
-        <div className="flex-1 overflow-y-auto rounded-2xl bg-white p-6 sm:p-8 shadow-sm [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden">
+        <div className="flex-1 overflow-y-auto rounded-2xl bg-white p-4 md:p-8 shadow-sm [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden">
           {activeTab === "about" && (
             <div className="flex h-full flex-col justify-between space-y-6">
               <p className="text-xs md:text-sm leading-relaxed text-neutral-700 font-normal max-w-3xl">
