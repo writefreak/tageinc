@@ -53,7 +53,7 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
 
   return (
     /* Increased container width to max-w-7xl for wide desktop view */
-    <div className="mx-auto max-w-350 md:max-w-6xl px-4 py-16 md:pb-16 md:px-12">
+    <div className="mx-auto max-w-350 md:max-w-6xl px-4 md:pt-14 pt-4 pb-20 md:pb-32 md:px-12">
       {/* Back Button */}
       <a
         href="/agents"
@@ -157,15 +157,15 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
         <div className="flex-1 overflow-y-auto rounded-2xl bg-white p-6 sm:p-8 shadow-sm [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden">
           {activeTab === "about" && (
             <div className="flex h-full flex-col justify-between space-y-6">
-              <p className="text-sm leading-relaxed text-neutral-700 font-normal max-w-3xl">
+              <p className="text-xs md:text-sm leading-relaxed text-neutral-700 font-normal max-w-3xl">
                 {agent.about}
               </p>
-              <div className="flex items-center justify-between border-t border-neutral-100 pt-6 text-sm">
+              <div className="flex flex-col md:flex-row md:items-center justify-between border-t border-neutral-100 pt-6 text-sm">
                 <span className="flex items-center gap-2 font-semibold text-rose-500">
                   <MapPin className="h-4 w-4" />
                   Location
                 </span>
-                <span className="font-semibold text-neutral-800">
+                <span className="font-semibold text-xs text-neutral-800">
                   {agent.location}
                 </span>
               </div>
