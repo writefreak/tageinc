@@ -20,6 +20,7 @@ import {
 import { Agent } from "@/lib/types/agents";
 import { Property } from "@/lib/types/property";
 import ImageCard from "../ui/image-card";
+import Link from "next/link";
 
 type TabId = "about" | "followers" | "ratings" | "properties";
 
@@ -123,9 +124,9 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
       </div>
 
       {/* Main Content Box Container with Fixed Height & Wide Desktop Width */}
-      <div className="mt-8 flex font-display flex-col h-140 rounded-4xl p-4 sm:p-6">
+      <div className="md:pt-8 flex font-display flex-col h-140 rounded-4xl p-4">
         {/* Navigation Tabs - Horizontally scrollable on mobile without scrollbar */}
-        <div className="flex shrink-0 gap-2.5 pb-4 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex shrink-0 gap-2.5 md:pt-4 pb-4 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -153,10 +154,10 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
         </div>
 
         {/* Tab Inner Card with Fixed Height & Scrollable Content — scrollbar hidden, scroll still works */}
-        <div className="flex-1 overflow-y-auto rounded-2xl bg-white p-6 sm:p-8 shadow-xs [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex-1 overflow-y-auto rounded-2xl bg-white p-6 sm:p-8 shadow-sm [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden">
           {activeTab === "about" && (
             <div className="flex h-full flex-col justify-between space-y-6">
-              <p className="text-sm leading-relaxed text-neutral-700 font-normal max-w-5xl">
+              <p className="text-sm leading-relaxed text-neutral-700 font-normal max-w-3xl">
                 {agent.about}
               </p>
               <div className="flex items-center justify-between border-t border-neutral-100 pt-6 text-sm">
@@ -176,9 +177,9 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
               {agent.followers.map((follower) => (
                 <div
                   key={follower.id}
-                  className="flex items-center gap-3 p-2 rounded-xl bg-neutral-50"
+                  className="flex items-center gap-3 p-2 rounded-2xl bg-white border border-neutral-300"
                 >
-                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-neutral-200">
+                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl">
                     <Image
                       src={follower.avatarUrl}
                       alt={follower.name}
@@ -250,9 +251,24 @@ export default function AgentProfile({ agent, properties }: AgentProfileProps) {
           {activeTab === "properties" && (
             <div>
               {properties.length === 0 ? (
-                <p className="text-sm text-neutral-500">
-                  No properties listed yet.
-                </p>
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-50 text-orange-600 mb-4 shadow-xs">
+                    <Building2 className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-base md:text-lg font-semibold text-neutral-900">
+                    No properties listed yet
+                  </h3>
+                  <p className="pt-1 text-xs md:text-sm text-neutral-500 max-w-sm">
+                    This agent currently has no active property listings
+                    available.
+                  </p>
+                  <Link
+                    href="/listing"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-orange-600 px-6 py-2.5 text-xs font-semibold text-white shadow-2xs transition hover:bg-orange-500 active:scale-95"
+                  >
+                    Browse other properties
+                  </Link>
+                </div>
               ) : (
                 /* Updated to 3 columns on large screens to fill desktop width */
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
