@@ -12,7 +12,7 @@ interface Agent {
   listingsCount: number;
   rating: number;
   reviewCount: number;
-  joinedDate: string;
+  joinedDate: string; // ISO string for date sorting
   email: string;
   phone: string;
 }
@@ -200,6 +200,7 @@ export default function AgentsSection() {
                 className={`w-full max-w-sm ${isHiddenOnMobile ? "hidden sm:block" : "block"}`}
               >
                 <AgentCard
+                  id={agent.id}
                   name={agent.name}
                   city={agent.city}
                   avatarUrl={agent.avatarUrl}

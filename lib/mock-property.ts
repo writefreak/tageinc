@@ -12,7 +12,7 @@ function buildGallery(imageSrc: string, count = 6): string[] {
 // Placeholder until each listing carries its own agent. All 12 mock
 // listings point at this one agent for now.
 const DEFAULT_AGENT = {
-  id: "a1",
+  id: "1",
   name: "Sarah Jenkins",
   avatarUrl: "/home.jpg",
   phone: "+2348012345678",

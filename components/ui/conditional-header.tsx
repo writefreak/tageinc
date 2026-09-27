@@ -8,7 +8,7 @@ export default function ConditionalHeader() {
 
   // Hide header on dynamic property pages (e.g., /property/123) or agent pages (e.g., /agent/456)
   const isHiddenRoute =
-    pathname.startsWith("/listing/") || pathname.startsWith("/agent/");
+    pathname.startsWith("/listing/") || pathname.startsWith("/agents/");
 
   if (isHiddenRoute) {
     return null;
