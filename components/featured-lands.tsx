@@ -115,7 +115,7 @@ export default function FeaturedLandsSection() {
           <a href="/listing">
             <button
               type="button"
-              className="group font-display flex md:hidden items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
+              className="group font-display md:flex hidden items-center gap-2 rounded-full bg-orange-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-[#ff5500] active:scale-95 shadow-sm"
             >
               <span>Explore More</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

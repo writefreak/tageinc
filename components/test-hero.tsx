@@ -61,7 +61,7 @@ export default function Hero() {
           opacity: contentOpacity,
           willChange: "transform, opacity",
         }}
-        className="relative z-10 flex h-full md:min-h-[95vh] flex-col justify-between pt-24 md:pt-20 transform-gpu"
+        className="relative z-10 flex h-full md:min-h-[95vh] flex-col justify-between pt-24 md:pt-14 transform-gpu"
       >
         {/* Hero heading */}
         <div className="flex flex-col justify-start md:justify-center px-4 pt-4 md:pt-10 sm:px-8 lg:px-12 md:flex-1">
@@ -69,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="md:max-w-3xl max-w-full text-4xl md:text-6xl font-bold font-display leading-[1.05] text-white"
+            className="md:max-w-3xl max-w-full text-4xl md:text-5xl font-bold font-display leading-[1.05] text-white"
           >
             Discover Your Next <br className="hidden md:block" /> Dream Home
           </motion.h1>

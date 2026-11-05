@@ -101,7 +101,7 @@ export default function ListingHero() {
       </motion.div>
 
       {/* Search card pinned to bottom container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pb-8 sm:px-8 lg:px-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 pb-8 pt-4 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
