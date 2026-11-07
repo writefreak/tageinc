@@ -30,7 +30,7 @@ export default function WhyListSection() {
   ];
 
   return (
-    <section className="bg-white py-16 md:pt-22 md:pb-32 px-4 font-sans">
+    <section className="bg-white py-16 md:pt-22 md:pb-32 px-4 md:px-12 font-sans">
       <div className="mx-auto max-w-6xl">
         {/* Header Section highlighting Care & Support */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
