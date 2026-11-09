@@ -32,7 +32,6 @@ export default function WhyListSection() {
   return (
     <section className="bg-white py-16 md:pt-22 md:pb-32 px-4 md:px-12 font-sans">
       <div className="mx-auto max-w-6xl">
-        {/* Header Section highlighting Care & Support */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <h2 className="text-2xl sm:text-4xl font-bold font-display tracking-tight text-neutral-900">
             Why List on Homeland Premier?
@@ -44,7 +43,6 @@ export default function WhyListSection() {
           </p>
         </div>
 
-        {/* 2x2 Feature Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {features.map((feature, index) => {
             const Icon = feature.icon;
